@@ -105,7 +105,7 @@ Let's start with defining the report and what data we want to receive.
 
 In this example we tell the system we want to compare the emotions and ERS-scores in the different markets. Markets is a tag that is attached to every file in the project.
 
-For more detail on how the values and settings are defined check out how [elements are defined withing the report definition](https://github.com/Phebi-AI/report-definitions#elements)
+For more detail on how the values and settings are defined check out how [elements are defined within the report definition](https://github.com/Phebi-AI/report-definitions#elements)
 
 Using the sample report definition from above, the data passed to the render and update function, will look like the following:
 
