@@ -6,7 +6,7 @@ function Render(data, definition) {
     // Clear the document body.
     document.body.innerHTML = "";
 
-    var pnlColumn, pnlEmotion, label;
+    var pnlColumn, pnlEmotions, pnlEmotion, label, height;
     // Run through all data entries.
     // Using the sample report definition the
     // data structure will look like the following:
@@ -16,6 +16,8 @@ function Render(data, definition) {
     // "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
     // }]
     for (var i = 0; i < data.length; i++) {
+        var totalHeight = 0;
+
         // Create a new container element for the market.
         pnlColumn = document.createElement("div");
         pnlColumn.className = "Column";
@@ -29,14 +31,23 @@ function Render(data, definition) {
         // dimension can easily be changed through the report element settings.
         label.innerHTML = data[i][definition.Dimension];
 
+        // Set the width of the column so the chart
+        // uses the maximum amount of screen space.
+        pnlColumn.style.width = "calc(" + (100 / data.length) + "% - 40px)";
+
         // Add the label to the market container.
         pnlColumn.appendChild(label);
 
         // Run through all emotions of the market.
-        for (var e = 0; e < data[i].Emotion; e++) {
+        for (var e = 0; e < data[i].Emotion.length; e++) {
             // Create a new container for the emotion.
             pnlEmotion = document.createElement("div");
-            pnlEmotion.className = "Emotion";
+            pnlEmotion.className = "Emotion Emotion_" + e;
+
+            // Set the height to x% of the max percentage. x equals the emotion score.
+            height = (data[i].Emotion[e] / data[i].Count) * 100;
+            pnlEmotion.style.height = height + "%";
+            totalHeight += height;
 
             // Assign the predefined color for the
             // emotion to the container as background - color.
@@ -45,6 +56,8 @@ function Render(data, definition) {
             // Add the emotion control to the market container.
             pnlColumn.appendChild(pnlEmotion);
         }
+
+        label.style.height = (50 - (totalHeight / 2)) + "%";
 
         // Add the column control to the document body.
         document.body.appendChild(pnlColumn);
