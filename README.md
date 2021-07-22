@@ -216,4 +216,4 @@ TBD
 
 Your report is now appearing in your project
 
-![Report](https://raw.githubusercontent.com/Phebi-AI/charting-sample-1/main/Report.png)
+![Report](Report.png)
