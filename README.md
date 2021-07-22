@@ -190,6 +190,9 @@ function Render(data, definition) {
             pnlEmotion = document.createElement("div");
             pnlEmotion.className = "Emotion";
 
+            // Set the height to x% of the fifth of the max percentage. x equals the emotion score.
+            pnlEmotion.style.height = ((100 / 5) * data[i].Emotion[e]) + "%";
+            
             // Assign the predefined color for the
             // emotion to the container as background - color.
             pnlEmotion.style.backgroundColor = "var(--color-emotions-" + e + ")";
