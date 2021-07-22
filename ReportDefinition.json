@@ -12,6 +12,7 @@
               "Id": "report1",
               "Type": "SampleReport",
               "Dimension": "Market",
+              "GroupBy": "[Market]",
               "Measures": [
                 {
                   "Name": "Market",
