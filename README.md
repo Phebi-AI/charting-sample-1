@@ -253,7 +253,7 @@ html, body {
 }
 ```
 
-## 6 Uploading your report and chart to your project
+## 6 Importing your report definition and custom chart to a project
 
 TBD
 
