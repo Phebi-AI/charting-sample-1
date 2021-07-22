@@ -2,7 +2,7 @@
 
 ## 1. How Reports work
 
-In Phebi, a report is a set of defined report elements.. In order to create a custom report in Phebi, we have to create a report element that then is referred to in a report definition file.
+In Phebi, a report is a set of defined report elements. In order to create a custom report in Phebi, we have to create a report element that then is referred to in a report definition file.
 
 ## 2. Report Definition
 
