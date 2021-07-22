@@ -205,6 +205,7 @@ function Render(data, definition) {
         document.body.appendChild(pnlColumn);
     }
 }
+```
 
 ### 5.4 Styling the report
 
