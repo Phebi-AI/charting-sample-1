@@ -161,7 +161,6 @@ function Render(data, definition) {
 We can now take the data that has been passed to the script and render the report.
 
 ```
-
 function Render(data, definition) {
     // Clear the chart container element.
     chart.innerHTML = "";
