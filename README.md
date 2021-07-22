@@ -64,8 +64,46 @@ The data comes an array of values how they have been defined in the report defin
 Let's start with defining the report and what data we want to receive.
 
 ```
-
+{
+  "Title": "charting-sample-1",
+  "Preview": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=",
+  "Rows": [
+    {
+      "height": "auto",
+      "Columns": [
+        {
+          "width": "auto",
+          "Elements": [
+            {
+              "Id": "report1",
+              "Type": "SampleReport",
+              "Dimension": "Market",
+              "GroupBy": "[Market]",
+              "Measures": [
+                {
+                  "Name": "Market",
+                  "Values": "[Market]"
+                },
+                {
+                  "Name": "Emotion",
+                  "Values": "[Emotion]"
+                },
+                {
+                  "Name": "ERS",
+                  "Values": "[ERS]"
+                }
+              ],
+              "Class": "DashboardElement_NoBox"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
+
+In this example we tell the system we want to compare the emotions and ERS-scores in the different markets. Markets is a tag that is attached to every file in the project.
 
 For more detail on how the values and settings are defined check out how [elements are defined withing the report definition](https://github.com/Phebi-AI/report-definitions#elements)
 
