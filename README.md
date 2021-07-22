@@ -59,6 +59,14 @@ When the report is loaded, Phebi will call "Render" on window level with two arg
 
 The data comes an array of values how they have been defined in the report definition. The definition is a copy of the report definition, passing settings like dimensions etc. etc.
 
+### 5.1 Define the report
+
+Let's start with defining the report and what data we want to receive.
+
+```
+
+```
+
 For more detail on how the values and settings are defined check out how [elements are defined withing the report definition](https://github.com/Phebi-AI/report-definitions#elements)
 
 Let's create a new javascript file and reference it in the index.html
@@ -78,5 +86,10 @@ index.html
 
 chart.js
 ```
+function Update(data, definition) {
+    Render(data, definition);
+}
 
+function Render(data, definition) {
+}
 ```
