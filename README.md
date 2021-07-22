@@ -51,3 +51,14 @@ To design a white box how it's commonly used in the Phebi Portal you can referen
 ```
 
 For a full list of available styling variables, check out the [Colors.css](https://dev.phebi.ai/defaults/Colors.css) file.
+
+## 5. Receiving charting data
+
+When the report is loaded, Phebi will call "Render" on window level. It will two arguments, "data" and "definition". 
+The data comes an array of values how they have been defined in the report definition. The definition is a copy of the report definition, passing settings like dimensions etc. etc.
+For more detail on how the values and settings are defined check out how [elements are defined withing the report definition](https://github.com/Phebi-AI/report-definitions#elements)
+
+index.html
+```
+
+```
