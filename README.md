@@ -10,5 +10,44 @@ The report definition is quite simple. It mainly consists of rows, columns and e
 
 A more detailed tutorial how to define reports can be found [here](https://github.com/Phebi-AI/report-definitions).
 
+## 3. HTML
 
+A custom report element runs in the portal in an iframe, giving the programmer complete control of the chart. Phebi will always reference to index.html, so we start by creating that.
 
+index.html
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+</body>
+</html>
+```
+
+## 4. Phebi Scripts
+
+To align with the Phebi Portal UI, there are two important scripts that can be referenced. 
+
+```
+<link rel="stylesheet" type="text/css" href="/core/Core.css" />
+<link rel="stylesheet" type="text/css" href="/defaults/Colors.css" />
+```
+
+The Core.css applies basic styling, like font-family etc. 
+The Colors.css contains default variables of colors and designs used.
+
+To design a white box how it's commonly used in the Phebi Portal you can reference the following variables:
+
+```
+<style type="text/css">
+  .Box {
+    background-color: var(--background2);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+  }
+</style>
+```
+
+For a full list of available styling variables, check out the [Colors.css](https://dev.phebi.ai/defaults/Colors.css) file.
