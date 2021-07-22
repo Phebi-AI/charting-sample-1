@@ -209,6 +209,8 @@ function Render(data, definition) {
 
 ### 5.4 Styling the report
 
+Let's apply some basic styling, so the columns appear next to each other.
+
 index.html
 ```
 <!DOCTYPE html>
