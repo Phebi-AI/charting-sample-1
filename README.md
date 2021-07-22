@@ -107,6 +107,28 @@ In this example we tell the system we want to compare the emotions and ERS-score
 
 For more detail on how the values and settings are defined check out how [elements are defined withing the report definition](https://github.com/Phebi-AI/report-definitions#elements)
 
+Using the sample report definition from above, the data passed to the render and update function, will look like the following:
+
+```
+[
+    { 
+        "Market": "France", 
+        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+    },
+    { 
+        "Market": "Italy", 
+        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+    },
+    { 
+        "Market": "Germany", 
+        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+    }
+]
+```
+
 ### 5.2 Create the charting javascript file
 
 Let's create a new javascript file and reference it in the index.html
@@ -136,26 +158,6 @@ function Render(data, definition) {
 
 ### 5.3 Render the report
 
-Using the sample report definition from above, the data passed to the render and update function, will look like the following:
-
-```
-[
-    { 
-        "Market": "France", 
-        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
-    },
-    { 
-        "Market": "Italy", 
-        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
-    },
-    { 
-        "Market": "Germany", 
-        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
-    }
-]
 ```
 
 function Render(data, definition) {
