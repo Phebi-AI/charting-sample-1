@@ -255,11 +255,11 @@ html, body {
 }
 ```
 
-## 6 Importing your report definition and custom chart to a project
+## 6. Importing your report definition and custom chart to a project
 
 TBD
 
-## 7 Voila
+## 7. Voila
 
 Your report is now appearing in your project
 
