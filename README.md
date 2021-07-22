@@ -139,11 +139,13 @@ function Render(data, definition) {
 Using the sample report definition from above, the data passed to the render and update function, will look like the following:
 
 ```
-[{ 
-"Market": "Germany", 
-"Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-"ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
-}]
+[
+    { 
+        "Market": "Germany", 
+        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+    }
+]
 ```
 
 function Render(data, definition) {
