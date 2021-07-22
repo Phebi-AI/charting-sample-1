@@ -8,5 +8,7 @@ In Phebi, a report is a set of defined report elements.. In order to create a cu
 
 The report definition is quite simple. It mainly consists of rows, columns and elements. It will also need a title and a thumbnail image. There are a number of default report elements that can be configured through a set of settings.
 
-A more detailed tutorial how to define reports can be found here.
+A more detailed tutorial how to define reports can be found [here](https://github.com/Phebi-AI/report-definitions).
+
+
 
