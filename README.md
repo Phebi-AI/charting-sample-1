@@ -52,7 +52,7 @@ To design a white box how it's commonly used in the Phebi Portal you can referen
 
 For a full list of available styling variables, check out the [Colors.css](https://dev.phebi.ai/defaults/Colors.css) file.
 
-## 5. Receiving charting data
+## 5. Building the chart
 
 In order to receive data, we need to define two javascript methods on window level. "Render" and "Update"
 When the report is loaded, Phebi will call "Render" on window level with two arguments, "data" and "definition". 
@@ -156,7 +156,7 @@ function Render(data, definition) {
 }
 ```
 
-### 5.3 Rendering the report
+### 5.3 Receiving data and Rendering the report
 
 We can now take the data that has been passed to the script and render the report.
 
@@ -205,3 +205,15 @@ function Render(data, definition) {
         document.body.appendChild(pnlColumn);
     }
 }
+
+### 5.4 Styling the report
+
+## 6 Uploading your report and chart to your project
+
+TBD
+
+## 7 Voila
+
+Your report is now appearing in your project
+
+![Report](https://raw.githubusercontent.com/Phebi-AI/charting-sample-1/main/Report.png)
