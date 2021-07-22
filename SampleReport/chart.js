@@ -3,8 +3,8 @@ function Update(data, definition) {
 }
 
 function Render(data, definition) {
-    // Clear the chart container element.
-    chart.innerHTML = "";
+    // Clear the document body.
+    document.body.innerHTML = "";
 
     var pnlColumn, pnlEmotion, label;
     // Run through all data entries.
@@ -45,5 +45,8 @@ function Render(data, definition) {
             // Add the emotion control to the market container.
             pnlColumn.appendChild(pnlEmotion);
         }
+
+        // Add the column control to the document body.
+        document.body.appendChild(pnlColumn);
     }
 }
