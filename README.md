@@ -156,7 +156,9 @@ function Render(data, definition) {
 }
 ```
 
-### 5.3 Render the report
+### 5.3 Rendering the report
+
+We can now take the data that has been passed to the script and render the report.
 
 ```
 
