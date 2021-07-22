@@ -82,15 +82,15 @@ Let's start with defining the report and what data we want to receive.
               "Measures": [
                 {
                   "Name": "Market",
-                  "Values": "[Market]"
+                  "Value": "[Market]"
                 },
                 {
                   "Name": "Emotion",
-                  "Values": "[Emotion]"
+                  "Value": "[Emotion]"
                 },
                 {
                   "Name": "ERS",
-                  "Values": "[ERS]"
+                  "Value": "[ERS]"
                 }
               ],
               "Class": "DashboardElement_NoBox"
