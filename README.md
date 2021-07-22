@@ -209,6 +209,50 @@ function Render(data, definition) {
 
 ### 5.4 Styling the report
 
+index.html
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="chart.js"></script>
+    <link rel="stylesheet" href="chart.css" type="text/css" />
+    <link rel="stylesheet" href="/core/Core.css" type="text/css" />
+    <link rel="stylesheet" href="/defaults/Colors.css" type="text/css" />
+</head>
+<body>
+</body>
+</html>
+```
+
+chart.css
+```
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+.Column {
+    height: 100%;
+    margin: 0px 20px;
+    min-width: 200px;
+    float:left;
+}
+.Label {
+    text-align: center;
+}
+.Emotion {
+    width: 100%;
+}
+.Emotion_0 {
+    border-radius: var(--border-radius-top);
+}
+.Emotion_4 {
+    border-radius: var(--border-radius-bottom);
+}
+```
+
 ## 6 Uploading your report and chart to your project
 
 TBD
