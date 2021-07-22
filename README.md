@@ -54,13 +54,29 @@ For a full list of available styling variables, check out the [Colors.css](https
 
 ## 5. Receiving charting data
 
-When the report is loaded, Phebi will call "Render" on window level. It will two arguments, "data" and "definition". 
+In order to receive data, we need to define two javascript methods on window level. "Render" and "Update"
+When the report is loaded, Phebi will call "Render" on window level with two arguments, "data" and "definition". 
 
 The data comes an array of values how they have been defined in the report definition. The definition is a copy of the report definition, passing settings like dimensions etc. etc.
 
 For more detail on how the values and settings are defined check out how [elements are defined withing the report definition](https://github.com/Phebi-AI/report-definitions#elements)
 
+Let's create a new javascript file and reference it in the index.html
+
 index.html
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="chart.js"></script>
+</head>
+<body>
+</body>
+</html>
+```
+
+chart.js
 ```
 
 ```
