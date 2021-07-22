@@ -185,7 +185,7 @@ function Render(data, definition) {
         pnlColumn.appendChild(label);
 
         // Run through all emotions of the market.
-        for (var e = 0; e < data[i].Emotion; e++) {
+        for (var e = 0; e < data[i].Emotion.length; e++) {
             // Create a new container for the emotion.
             pnlEmotion = document.createElement("div");
             pnlEmotion.className = "Emotion";
