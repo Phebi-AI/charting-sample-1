@@ -26,7 +26,7 @@ index.html
 </html>
 ```
 
-## 4. Phebi Scripts
+## 4. Phebi Stylesheets
 
 To align with the Phebi Portal UI, there are two important scripts that can be referenced. 
 
