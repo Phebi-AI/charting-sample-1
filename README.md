@@ -91,6 +91,10 @@ Let's start with defining the report and what data we want to receive.
                 {
                   "Name": "ERS",
                   "Value": "[ERS]"
+                },
+                {
+                  "Name": "Count",
+                  "Value": "count([Market])"
                 }
               ],
               "Class": "DashboardElement_NoBox"
@@ -105,6 +109,8 @@ Let's start with defining the report and what data we want to receive.
 
 In this example we tell the system we want to compare the emotions and ERS-scores in the different markets. Markets is a tag that is attached to every file in the project.
 
+The "GroupBy" will sum the data by market. We use the "Count" variable so we can calculate the average emotion score from the sum.
+
 For more detail on how the values and settings are defined check out how [elements are defined within the report definition](https://github.com/Phebi-AI/report-definitions#elements)
 
 Using the sample report definition from above, the data passed to the render and update function, will look like the following:
@@ -113,18 +119,21 @@ Using the sample report definition from above, the data passed to the render and
 [
     { 
         "Market": "France", 
-        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+        "Emotion": [2.8, 1.6, 3.4, 1.3, 2.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 },
+        "Count": 5
     },
     { 
         "Market": "Italy", 
-        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+        "Emotion": [2.8, 1.6, 3.4, 1.3, 2.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 },
+        "Count": 5
     },
     { 
         "Market": "Germany", 
-        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+        "Emotion": [2.8, 1.6, 3.4, 1.3, 2.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 },
+        "Count": 5
     }
 ]
 ```
