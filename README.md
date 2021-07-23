@@ -2,7 +2,7 @@
 
 ## 1. How Reports work
 
-In Phebi, a report is a set of defined report elements.. In order to create a custom report in Phebi, we have to create a report element that then is referred to in a report definition file.
+In Phebi, a report is a set of defined report elements. In order to create a custom report in Phebi, we have to create a report element that then is referred to in a report definition file.
 
 ## 2. Report Definition
 
@@ -52,7 +52,7 @@ To design a white box how it's commonly used in the Phebi Portal you can referen
 
 For a full list of available styling variables, check out the [Colors.css](https://dev.phebi.ai/defaults/Colors.css) file.
 
-## 5. Receiving charting data
+## 5. Building the chart
 
 In order to receive data, we need to define two javascript methods on window level. "Render" and "Update"
 When the report is loaded, Phebi will call "Render" on window level with two arguments, "data" and "definition". 
@@ -91,6 +91,10 @@ Let's start with defining the report and what data we want to receive.
                 {
                   "Name": "ERS",
                   "Value": "[ERS]"
+                },
+                {
+                  "Name": "Count",
+                  "Value": "count([Market])"
                 }
               ],
               "Class": "DashboardElement_NoBox"
@@ -105,7 +109,9 @@ Let's start with defining the report and what data we want to receive.
 
 In this example we tell the system we want to compare the emotions and ERS-scores in the different markets. Markets is a tag that is attached to every file in the project.
 
-For more detail on how the values and settings are defined check out how [elements are defined withing the report definition](https://github.com/Phebi-AI/report-definitions#elements)
+The "GroupBy" will sum the data by market. We use the "Count" variable so we can calculate the average emotion score from the sum.
+
+For more detail on how the values and settings are defined check out how [elements are defined within the report definition](https://github.com/Phebi-AI/report-definitions#elements)
 
 Using the sample report definition from above, the data passed to the render and update function, will look like the following:
 
@@ -113,18 +119,21 @@ Using the sample report definition from above, the data passed to the render and
 [
     { 
         "Market": "France", 
-        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+        "Emotion": [2.8, 1.6, 3.4, 1.3, 2.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 },
+        "Count": 5
     },
     { 
         "Market": "Italy", 
-        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+        "Emotion": [2.8, 1.6, 3.4, 1.3, 2.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 },
+        "Count": 5
     },
     { 
         "Market": "Germany", 
-        "Emotion": [0.8, 0.6, 0.4, 0.3, 0.2], 
-        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 }
+        "Emotion": [2.8, 1.6, 3.4, 1.3, 2.2], 
+        "ERS": { "Score": 0.5, "Positive": 1, "Negative": -1 },
+        "Count": 5
     }
 ]
 ```
@@ -156,7 +165,7 @@ function Render(data, definition) {
 }
 ```
 
-### 5.3 Rendering the report
+### 5.3 Receiving data and Rendering the report
 
 We can now take the data that has been passed to the script and render the report.
 
@@ -165,9 +174,11 @@ function Render(data, definition) {
     // Clear the document body.
     document.body.innerHTML = "";
 
-    var pnlColumn, pnlEmotion, label;
+    var pnlColumn, pnlEmotions, pnlEmotion, label, height;
     // Run through all data entries.
     for (var i = 0; i < data.length; i++) {
+        var totalHeight = 0;
+
         // Create a new container element for the market.
         pnlColumn = document.createElement("div");
         pnlColumn.className = "Column";
@@ -181,6 +192,10 @@ function Render(data, definition) {
         // dimension can easily be changed through the report element settings.
         label.innerHTML = data[i][definition.Dimension];
 
+        // Set the width of the column so the chart
+        // uses the maximum amount of screen space.
+        pnlColumn.style.width = "calc(" + (100 / data.length) + "% - 40px)";
+
         // Add the label to the market container.
         pnlColumn.appendChild(label);
 
@@ -188,11 +203,13 @@ function Render(data, definition) {
         for (var e = 0; e < data[i].Emotion.length; e++) {
             // Create a new container for the emotion.
             pnlEmotion = document.createElement("div");
-            pnlEmotion.className = "Emotion";
+            pnlEmotion.className = "Emotion Emotion_" + e;
 
-            // Set the height to x% of the fifth of the max percentage. x equals the emotion score.
-            pnlEmotion.style.height = ((100 / 5) * data[i].Emotion[e]) + "%";
-            
+            // Set the height to x% of the max percentage. x equals the emotion score.
+            height = (data[i].Emotion[e] / data[i].Count) * 100;
+            pnlEmotion.style.height = height + "%";
+            totalHeight += height;
+
             // Assign the predefined color for the
             // emotion to the container as background - color.
             pnlEmotion.style.backgroundColor = "var(--color-emotions-" + e + ")";
@@ -200,8 +217,69 @@ function Render(data, definition) {
             // Add the emotion control to the market container.
             pnlColumn.appendChild(pnlEmotion);
         }
-        
+
+        label.style.height = (50 - (totalHeight / 2)) + "%";
+
         // Add the column control to the document body.
         document.body.appendChild(pnlColumn);
     }
 }
+```
+
+### 5.4 Styling the report
+
+Let's apply some basic styling, so the columns appear next to each other.
+
+index.html
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="chart.js"></script>
+    <link rel="stylesheet" href="chart.css" type="text/css" />
+    <link rel="stylesheet" href="/core/Core.css" type="text/css" />
+    <link rel="stylesheet" href="/defaults/Colors.css" type="text/css" />
+</head>
+<body>
+</body>
+</html>
+```
+
+chart.css
+```
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+.Column {
+    height: 100%;
+    margin: 0px 20px;
+    min-width: 200px;
+    float:left;
+}
+.Label {
+    text-align: center;
+}
+.Emotion {
+    width: 100%;
+}
+.Emotion_0 {
+    border-radius: var(--border-radius-top);
+}
+.Emotion_4 {
+    border-radius: var(--border-radius-bottom);
+}
+```
+
+## 6. Deploying your report definition and custom chart
+
+TBD
+
+## 7. Voila
+
+Your report is now appearing in your project
+
+![Report](Report.png)
