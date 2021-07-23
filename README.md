@@ -255,7 +255,7 @@ html, body {
 }
 ```
 
-## 6. Importing your report definition and custom chart to a project
+## 6. Deploying your report definition and custom chart
 
 TBD
 
