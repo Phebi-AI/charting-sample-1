@@ -25,6 +25,10 @@
                 {
                   "Name": "ERS",
                   "Value": "[ERS]"
+                },
+                {
+                  "Name": "Count",
+                  "Value": "count([Market])"
                 }
               ],
               "Class": "DashboardElement_NoBox"
